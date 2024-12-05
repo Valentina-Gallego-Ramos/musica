@@ -1,0 +1,74 @@
+
+        import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+      
+        String[] cancionesEscogidas = {"colegiala", "los sabanales", "burrito sabanero", "hello", "yo", "java", "soft"};
+        ReproductorMusica Ventana1 = new ReproductorMusica(cancionesEscogidas);
+
+   Ventana1.devolverCancion();
+   Ventana1.devolverCancion();
+   Ventana1.devolverCancion();
+   Ventana1.devolverCancion();
+   Ventana1.agregarCancionesFavoritas();
+   Ventana1.proximaCancion();
+   Ventana1.agregarCancionesFavoritas();
+   Ventana1.proximaCancion(); 
+   Ventana1.agregarCancionesFavoritas();
+   Ventana1.cambiarEstadoReproduccion();
+   Ventana1.cambiarEstadoReproduccion();
+   Ventana1.cambiarEstadoReproduccion();
+   Ventana1.cambiarEstadoReproduccion();
+    }
+}
+
+public class ReproductorMusica {
+    private List<String> canciones;
+    private int indiceActual;// indiceactual indica la poscicion actual en la lista de canciones.
+    private boolean reproduciendo;
+
+    public ReproductorMusica(String[] canciones) {
+        this.canciones = new ArrayList<>();
+        for (String cancion : canciones) {
+            this.canciones.add(cancion);
+        }
+        this.indiceActual = 0;
+        this.reproduciendo = false;
+    }
+
+    public void devolverCancion() {
+        if (!canciones.isEmpty()) {// is empty es para verificar si la lista esta vacia. esta linea verifica si la lista de canciones esta vacia.
+            System.out.println("Canción actual: " + canciones.get(indiceActual));
+        }
+    }
+
+    public void agregarCancionesFavoritas() {
+        System.out.println("Canción agregada a favoritas: " + canciones.get(indiceActual));
+    }
+
+    public void proximaCancion() {
+        if (indiceActual < canciones.size() - 1) {
+            indiceActual++;
+            System.out.println("Próxima canción: " + canciones.get(indiceActual));
+        } else {
+            System.out.println("No hay más canciones.");
+        }
+    }
+
+    public void cambiarEstadoReproduccion() {
+        reproduciendo = !reproduciendo;
+        if (reproduciendo) {
+            System.out.println("Reproduciendo: " + canciones.get(indiceActual));
+        } else {
+            System.out.println("Pausado: " + canciones.get(indiceActual));
+        }
+        
+    
+    }
+    
+     
+}
+
+        
